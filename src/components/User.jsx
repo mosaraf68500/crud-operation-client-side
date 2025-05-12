@@ -51,7 +51,7 @@ const User = ({UserPromise}) => {
 
             <div className='grid grid-cols-3 gap-4 border-2 p-4 justify-center items-center'>
                 {
-                    users.map(user=><UserCard key={user._id} user={user}></UserCard>)
+                    users.map(user=><UserCard users={users} setUser={setUser} key={user._id} user={user}></UserCard>)
                 }
             </div>
         </div>

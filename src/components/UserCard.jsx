@@ -1,8 +1,23 @@
 import React from "react";
 
-const UserCard = ({user}) => {
+const UserCard = ({user,setUser,users}) => {
 
-    const{name,email}=user;
+    const{_id,name,email}=user;
+
+    const handleDeleteBtn=(id)=>{
+        fetch(`http://localhost:3000/users/${id}`,{
+            method:"DELETE"
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log("delete id:",data)
+            if(data.deletedCount){
+                const remaingUsers=users.filter(u=>u._id!==id)
+                setUser(remaingUsers)
+            }
+        })
+        console.log("deleted success",id);
+    }
   return (
     <div >
       <div className="card bg-base-100 shadow-sm">
@@ -12,7 +27,7 @@ const UserCard = ({user}) => {
           {email}
           </p>
           <div className="card-actions">
-            <button className="btn btn-primary">Buy Now</button>
+            <button onClick={()=>handleDeleteBtn(_id)} className="btn btn-primary">Delete Now</button>
           </div>
         </div>
       </div>
