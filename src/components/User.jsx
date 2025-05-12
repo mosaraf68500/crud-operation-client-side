@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { use } from 'react';
 
 const handleAddUser =e=>{
     e.preventDefault();
@@ -17,9 +17,16 @@ const handleAddUser =e=>{
     .then(res=>res.json())
     .then(data =>{
         console.log('after the insert data',data);
+        if(data.insertedId){
+            alert("user added successfully");
+            e.target.reset();
+        }
     })
 }
-const User = () => {
+const User = ({UserPromise}) => {
+
+    const initialUsers=use(UserPromise)
+    console.log(initialUsers);
     return (
         <div className='w-11/12 mx-auto bg-gray-200 rounded-3xl'>
             <div>
