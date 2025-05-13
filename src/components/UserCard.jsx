@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 const UserCard = ({user,setUser,users}) => {
 
@@ -28,6 +29,7 @@ const UserCard = ({user,setUser,users}) => {
           </p>
           <div className="card-actions">
             <button onClick={()=>handleDeleteBtn(_id)} className="btn btn-primary">Delete Now</button>
+            <Link className="btn btn-accent" to={`/users/${_id}`}>Details</Link>
           </div>
         </div>
       </div>
