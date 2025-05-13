@@ -30,6 +30,7 @@ const UserCard = ({user,setUser,users}) => {
           <div className="card-actions">
             <button onClick={()=>handleDeleteBtn(_id)} className="btn btn-primary">Delete Now</button>
             <Link className="btn btn-accent" to={`/users/${_id}`}>Details</Link>
+            <Link className="btn btn-info" to={`/update/${_id}`}>Update</Link>
           </div>
         </div>
       </div>
